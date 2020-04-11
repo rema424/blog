@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}プログラミングやってみた{% endblock %}</title>
+
+  <link rel="stylesheet" href="/vendor/ress/ress.min.css">
+  <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  {% block css %}{% endblock %}
+
+  <script defer src="/js/main.js"></script>
+  {% block js %}{% endblock %}
+</head>
+
+<body>
+  <header class="Header"></header>
+  <div class="Body">
+    {% block content %}{% endblock %}
+  </div>
+  <footer class="Footer"></footer>
+</body>
+
+</html>

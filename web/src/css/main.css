@@ -1,0 +1,20 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+}
+.Header {
+  height: 50px;
+}
+.Body {
+  height: 100%;
+  color: red;
+  background: #efecec;
+}
+.Footer {
+  height: 100px;
+}

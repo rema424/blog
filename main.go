@@ -22,20 +22,20 @@ var (
 )
 
 func main() {
-	e := newEcho("")
+	e := newEcho("web/template")
 	e = route(e)
 
 	if port == "" {
 		port = "8080"
 	}
-	// http.Handle("/", e)
-	// log.Printf("Listening on localhost:%s", port)
-	// if err := http.ListenAndServe(":"+port, nil); err != nil {
-	// 	log.Fatal(err)
-	// }
-	if err := e.Start(":" + port); err != nil {
+	http.Handle("/", e)
+	log.Printf("Listening on localhost:%s", port)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal(err)
 	}
+	// if err := e.Start(":" + port); err != nil {
+	// 	log.Fatal(err)
+	// }
 }
 
 func route(e *echo.Echo) *echo.Echo {
@@ -47,7 +47,7 @@ func route(e *echo.Echo) *echo.Echo {
 func newEcho(tmplDir string) *echo.Echo {
 	e := echo.New()
 
-	e.Use(middleware.Recover())
+	// e.Use(middleware.Recover())
 	e.Use(middleware.Gzip())
 	// Ref: https://www.ipa.go.jp/security/vuln/websecurity.html
 	// Ref: https://www.templarbit.com/blog/jp/2018/07/24/top-http-security-headers-and-how-to-deploy-them/
@@ -74,6 +74,10 @@ func newEcho(tmplDir string) *echo.Echo {
 		"isTel":         IsTel,
 	})
 	e.Renderer = NewPongoRenderer(tmplDir)
+	e.Static("/js", "web/src/js")
+	e.Static("/css", "web/src/css")
+	e.Static("/public", "web/public")
+	e.Static("/vendor", "web/vendor")
 
 	return e
 }
