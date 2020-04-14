@@ -78,7 +78,10 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	e := echo.New()
+  e := echo.New()
+	e.GET("/health", func(c echo.Context) error {
+		return c.NoContent(200)
+	})
 	e.GET("/people", func(c echo.Context) error {
 		var ps []*Person
 		if err := db.Select(&ps, "select id, name, age from people;"); err != nil {
@@ -147,13 +150,13 @@ export PATH=$PATH:/usr/local/go/bin
 go mod tidy
 go run main.go
 dial tcp 127.0.0.1:3306: connect: connection refused
-sudo export DB_USER=developer
-sudo export DB_PASS=Passw0rd!
-sudo export DB_NAME=blog
-sudo export DB_HOST=blog-database.cluster-cll9xfuraffh.ap-northeast-1.rds.amazonaws.com
-sudo export DB_PORT=3306
-sudo export DB_NET=tcp
-sudo export DB_ADDR=''
+export DB_USER=developer
+export DB_PASS=Passw0rd!
+export DB_NAME=blog
+export DB_HOST=blog-database.cluster-cll9xfuraffh.ap-northeast-1.rds.amazonaws.com
+export DB_PORT=3306
+export DB_NET=tcp
+export DB_ADDR=''
 go run main.go
 listen tcp :80: bind: permission denied
 go build -o app

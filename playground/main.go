@@ -49,6 +49,9 @@ func main() {
 	}
 
 	e := echo.New()
+	e.GET("/health", func(c echo.Context) error {
+		return c.NoContent(200)
+	})
 	e.GET("/people", func(c echo.Context) error {
 		var ps []*Person
 		if err := db.Select(&ps, "select id, name, age from people;"); err != nil {
