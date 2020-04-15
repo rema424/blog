@@ -14,10 +14,11 @@ SeauelPro で RDS インスタンスに接続してデータベースを選択�
 ```sql
 CREATE DATABASE blog;
 SHOW DATABASES;
-CREATE USER developer@localhost IDENTIFIED BY 'Passw0rd!';
+CREATE USER developer@'%' IDENTIFIED BY 'Passw0rd!';
 SELECT host, user FROM mysql.user;
 GRANT ALL PRIVILEGES ON blog.* TO developer@'%';
 SHOW GRANTS FOR developer@'%';
+USE blog;
 CREATE TABLE people (
     id int AUTO_INCREMENT,
     name varchar(255),
