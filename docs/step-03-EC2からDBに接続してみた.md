@@ -172,3 +172,15 @@ sudo -E ./app # 環境変数が受け継がれる
 http://IP アドレス/people
 http://IP アドレス/people/1
 http://IP アドレス/people/5
+
+## .bash_profile に追記
+
+```sh
+export PATH=$PATH:/usr/local/go/bin
+export DB_USER=developer
+export DB_PASS=Passw0rd!
+export DB_NAME=blog
+export DB_HOST=blog-database.cluster-cll9xfuraffh.ap-northeast-1.rds.amazonaws.com
+export DB_PORT=3306
+export DB_NET=tcp
+```
