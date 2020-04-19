@@ -8,17 +8,17 @@ files:
 hooks:
   BeforeInstall:
     - location: step-03/scripts/before_install.sh
-      timiout: 3600
+      timiout: 20
       runas: root
       # runas: ec2-user
   AfterInstall:
     - location: step-03/scripts/after_install.sh
-      timiout: 3600
+      timiout: 20
       runas: root
       # runas: ec2-user
 
   ApplicationStart:
     - location: step-03/scripts/application_start.sh
-      timiout: 3600
+      timiout: 20
       runas: root
       # runas: ec2-user

@@ -4,4 +4,5 @@
 cd /webapps/goapp/
 
 # start application
-sudo -E ./app
+# sudo -E ./app
+./app
