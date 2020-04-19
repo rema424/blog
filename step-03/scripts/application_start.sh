@@ -5,4 +5,4 @@ cd /webapps/goapp/
 
 # start application
 # sudo -E ./app
-./app &
+./app > /dev/null 2> /dev/null < /dev/null &
