@@ -1,0 +1,24 @@
+version: 0.0
+os: linux
+
+files:
+  - soure: step-03/
+    destination: /webapps/goapp/
+
+hooks:
+  BeforeInstall:
+    - location: step-03/scripts/before_install.sh
+      timiout: 3600
+      # runas: root
+      runas: ec2-user
+  AfterInstall:
+    - locagion: step-03/scripts/after_install.sh
+      timiout: 3600
+      # runas: root
+      runas: ec2-user
+
+  ApplicationStart:
+    - locagion: step-03/scripts/application_start.sh
+      timiout: 3600
+      # runas: root
+      runas: ec2-user
