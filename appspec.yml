@@ -6,6 +6,11 @@ files:
     destination: /webapps/goapp/
 
 hooks:
+  ApplicationStop:
+    - location: step-03/scripts/application_stop.sh
+      timiout: 20
+      runas: root
+      # runas: ec2-user
   BeforeInstall:
     - location: step-03/scripts/before_install.sh
       timiout: 20
@@ -16,7 +21,6 @@ hooks:
       timiout: 20
       runas: root
       # runas: ec2-user
-
   ApplicationStart:
     - location: step-03/scripts/application_start.sh
       timiout: 20

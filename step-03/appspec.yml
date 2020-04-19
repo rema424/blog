@@ -16,7 +16,6 @@ hooks:
       timiout: 3600
       # runas: root
       runas: ec2-user
-
   ApplicationStart:
     - locagion: scripts/application_start.sh
       timiout: 3600
