@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - soure: step-03/
+  - source: step-03/
     destination: /webapps/goapp/
 
 hooks:
