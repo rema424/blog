@@ -12,13 +12,13 @@ hooks:
       # runas: root
       runas: ec2-user
   AfterInstall:
-    - locagion: step-03/scripts/after_install.sh
+    - location: step-03/scripts/after_install.sh
       timiout: 3600
       # runas: root
       runas: ec2-user
 
   ApplicationStart:
-    - locagion: step-03/scripts/application_start.sh
+    - location: step-03/scripts/application_start.sh
       timiout: 3600
       # runas: root
       runas: ec2-user
