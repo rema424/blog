@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pgrep goapp && pkill goapp || echo 'goapp not runnning'
+pgrep goappbinary && kill $(pgrep goappbinary) || echo 'goapp not runnning'
