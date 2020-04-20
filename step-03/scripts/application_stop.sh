@@ -1,4 +1,3 @@
 #!/bin/bash
 
-pkill app
-exit 0
+pgrep app && pkill app || echo 'app not runnning'
