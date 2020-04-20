@@ -13,5 +13,5 @@ cd /webapps/goapp/
 go mod tidy
 
 # make binary
-go build -o app
+go build -o goapp
 go install

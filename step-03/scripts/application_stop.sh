@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pgrep app && pkill app || echo 'app not runnning'
+pgrep goapp && pkill goapp || echo 'goapp not runnning'
