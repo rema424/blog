@@ -6,15 +6,64 @@ body {
 body {
   display: grid;
   grid-template-rows: max-content 1fr max-content;
+  color: #333;
 }
 .Header {
   height: 50px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: #3388ff;
+  color: #fff;
+}
+.Header__title {
+  font-size: 20px;
+  font-weight: bold;
 }
 .Body {
   height: 100%;
-  color: red;
-  background: #efecec;
 }
 .Footer {
   height: 100px;
+}
+.Breadcrumb {
+  font-size: 0;
+  display: flex;
+  justify-content: center;
+  overflow-x: scroll;
+}
+.Breadcrumb::-webkit-scrollbar {
+  display: none; /* Chrome, Safari 対応 */
+}
+.Breadcrumb__list {
+  display: flex;
+  list-style: none;
+}
+.Breadcrumb__item {
+  flex-shrink: 0;
+  font-size: 0;
+}
+.Breadcrumb__item:not(:first-child) {
+  position: relative;
+}
+.Breadcrumb__item:not(:first-child)::before {
+  position: absolute;
+  content: '\f0da';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 10px;
+  top: 50%;
+  left: 0;
+  transform: translate(-40%, -50%);
+  color: #9e9c9c;
+}
+.Breadcrumb__link {
+  padding: 8px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.Breadcrumb__name {
+  font-size: 12px;
+  display: block;
 }
