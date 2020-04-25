@@ -1,0 +1,16 @@
+body,
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+li {
+  display: inline-block;
+}
