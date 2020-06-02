@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: 2010-09-09
+# Description:
+Parameters:
+  Env:
+    Description: 作成する環境名
+    Type: String
+    AllowedValues:
+      - prod
+      - stg
+      - dev
+
+Resources:
+  # VPCの作成
+  VPC:
+    Type: "AWS::EC2::VPC"
+    # EnableDnsSupport: "true"
+    # EnableDnsHostnames: "true"
+    # InstanceTenancy: default
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      Tags:
+        - Key: Application
+          Value: !Ref "AWS::StackId"
+        - Key: Name
+          Value: !Sub "${Env}-vpc"
+  # インターネットゲートウェイの作成
+  InternetGateway:
+    Type: "AWS::EC2::InternetGateway"
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub "${Env}-igw"
+  # VPCとインターネットゲートウェイの紐付け
+  InternetGatewayAttachment:
+    Type: "AWS::EC2::VPCGatewayAttachment"
+    Properties:
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref VPC
+  # パブリックサブネットAの作成
+  PublicSubnetA:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      AvailabilityZone: "ap-northeast-1a"
+      CidrBlock: !Ref "10.0.1.0/24"
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub "${Env}-public-subnet-a"
+  # パブリックサブネットCの作成
+  PublicSubnetC:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      AvailabilityZone: "ap-northeast-1c"
+      CidrBlock: !Ref "10.0.2.0/24"
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub "${Env}-public-subnet-c"
+  # パブリックサブネットDの作成
+  PublicSubnetC:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      AvailabilityZone: "ap-northeast-1d"
+      CidrBlock: !Ref "10.0.3.0/24"
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub "${Env}-public-subnet-d"
